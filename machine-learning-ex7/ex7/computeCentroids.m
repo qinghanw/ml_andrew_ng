@@ -26,7 +26,17 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
+for i = 1:K
+	total = zeros(1, n); %每个分类总和
+	num = 0; %每个分类的个数
+	for j = 1:size(idx, 1)
+		if i == idx(j)
+			total = total + X(j, :);
+			num = num + 1;
+		end
+	end
+	centroids(i, :) = 1/num * total;
+end
 
 
 
